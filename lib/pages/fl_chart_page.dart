@@ -5,7 +5,6 @@ import '../widgets/charts/scatter_chart_widget.dart';
 import '../widgets/charts/radar_chart_widget.dart';
 
 import 'package:flutter/material.dart';
-import 'package:fl_chart/fl_chart.dart';
 
 class FlChartPage extends StatelessWidget {
   const FlChartPage({super.key});

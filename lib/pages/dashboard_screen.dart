@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import '../widgets/side_menu.dart';
 import '../widgets/overview_card.dart';
-import '../widgets/revenue_chart.dart';
-import '../widgets/category_chart.dart';
 import '../widgets/recent_orders_table.dart';
 import '../widgets/top_categories.dart';
-import '../models/categories.dart';
 import 'fl_chart_page.dart';
 
-
 class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({super.key});
+
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
 }
@@ -42,7 +40,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text("$role"), backgroundColor: Colors.purple),
+      appBar: AppBar(title: Text(role), backgroundColor: Colors.purple),
       drawer: SideMenu(role: role, onItemSelected: onMenuItemSelected),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -57,7 +55,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           value: '₹5,180',
                           icon: Icons.attach_money,
                           color: Colors.green,
-                          onTap: (){
+                          onTap: () {
                             Navigator.pushNamed(context, 'fl_chart');
                           },
                         ),
@@ -68,7 +66,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           value: '7',
                           icon: Icons.shopping_cart,
                           color: Colors.orange,
-                          onTap: (){
+                          onTap: () {
                             Navigator.pushNamed(context, '/orders');
                           },
                         ),
@@ -91,7 +89,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           value: '7',
                           icon: Icons.category,
                           color: Colors.blue,
-                          onTap: () => Navigator.pushNamed(context, '/categories'),
+                          onTap: () =>
+                              Navigator.pushNamed(context, '/categories'),
                         ),
                       ),
                     ],

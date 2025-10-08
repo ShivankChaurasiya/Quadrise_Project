@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -24,16 +26,16 @@ class _LoginPageState extends State<LoginPage> {
     String phone = _phoneController.text.trim();
 
     if (phone.isEmpty || otp.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please fill in all fields.')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Please fill in all fields.')));
       return;
     }
 
     if (otp != '1111') {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Invalid OTP. Please try again.')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Invalid OTP. Please try again.')));
       return;
     }
 
@@ -90,10 +92,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   items: roles
                       .map(
-                        (role) => DropdownMenuItem(
-                          value: role,
-                          child: Text(role),
-                        ),
+                        (role) =>
+                            DropdownMenuItem(value: role, child: Text(role)),
                       )
                       .toList(),
                 ),
@@ -126,8 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple,
-                    padding:
-                        EdgeInsets.symmetric(vertical: 15, horizontal: 80),
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 80),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
