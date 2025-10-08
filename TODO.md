@@ -1,0 +1,5 @@
+- [x] Fix radar_chart_widget.dart: Update getTitle to return RadarChartTitle objects, replace withOpacity with withValues()
+- [x] Fix scatter_chart_widget.dart: Remove const from scatterSpots list and ScatterSpot constructors, remove undefined color and radius parameters
+- [x] Fix test/widget_test.dart: Remove const from MyApp() instantiation
+- [x] Run flutter analyze to verify fixes
+- [x] Run flutter test to ensure tests pass

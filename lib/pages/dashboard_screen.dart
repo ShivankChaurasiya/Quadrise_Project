@@ -6,6 +6,8 @@ import '../widgets/category_chart.dart';
 import '../widgets/recent_orders_table.dart';
 import '../widgets/top_categories.dart';
 import '../models/categories.dart';
+import 'fl_chart_page.dart';
+
 
 class DashboardScreen extends StatefulWidget {
   @override
@@ -53,8 +55,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         child: OverviewCard(
                           title: 'Revenue',
                           value: '₹5,180',
-                          icon: Icons.attach_money, // ✅ new icon
-                          color: Colors.green, // ✅ icon color
+                          icon: Icons.attach_money,
+                          color: Colors.green,
+                          onTap: (){
+                            Navigator.pushNamed(context, 'fl_chart');
+                          },
                         ),
                       ),
                       Expanded(
@@ -63,6 +68,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           value: '7',
                           icon: Icons.shopping_cart,
                           color: Colors.orange,
+                          onTap: (){
+                            Navigator.pushNamed(context, '/orders');
+                          },
                         ),
                       ),
                     ],
@@ -83,31 +91,41 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           value: '7',
                           icon: Icons.category,
                           color: Colors.blue,
+                          onTap: () => Navigator.pushNamed(context, '/categories'),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 30),
-                  Card(
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: RevenueChart(
-                        revenueData: [
-                          1000,
-                          1500,
-                          1200,
-                          1800,
-                          2200,
-                          2500,
-                        ], // demo data
+                  const SizedBox(height: 30),
+
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const FlChartPage()),
+                      );
+                    },
+                    child: Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Center(
+                          child: Text(
+                            "FL Charts",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 30),
+
+                  const SizedBox(height: 30),
                   Card(
                     elevation: 3,
                     shape: RoundedRectangleBorder(
@@ -119,7 +137,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                   ),
 
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   Card(
                     elevation: 3,
                     shape: RoundedRectangleBorder(
@@ -127,7 +145,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(16),
-
                       child: RecentOrdersTable(
                         orders: [
                           {
@@ -160,7 +177,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             : Center(
                 child: Text(
                   'This is the $currentPage page.',
-                  style: TextStyle(fontSize: 22),
+                  style: const TextStyle(fontSize: 22),
                 ),
               ),
       ),

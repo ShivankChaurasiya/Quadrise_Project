@@ -2,7 +2,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class RevenueChart extends StatelessWidget {
-  final List<double> revenueData; // e.g. [1000, 1500, 1200, 1800, 2200]
+  // Accept numbers and convert to double internally for flexibility
+  final List<num> revenueData; // e.g. [1000, 1500, 1200, 1800, 2200]
 
   const RevenueChart({super.key, required this.revenueData});
 
@@ -34,7 +35,8 @@ class RevenueChart extends StatelessWidget {
                 LineChartBarData(
                   spots: List.generate(
                     revenueData.length,
-                    (index) => FlSpot(index.toDouble(), revenueData[index]),
+                    (index) =>
+                        FlSpot(index.toDouble(), revenueData[index].toDouble()),
                   ),
                   isCurved: true,
                   barWidth: 3,

@@ -5,19 +5,28 @@ class OverviewCard extends StatelessWidget {
   final String value;
   final IconData icon;
   final Color color;
+  final VoidCallback? onTap;
 
-  OverviewCard({
+  const OverviewCard({
+    super.key,
     required this.title,
     required this.value,
     required this.icon,
     this.color = Colors.purple,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Card(
       elevation: 4,
       margin: EdgeInsets.all(8),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
         child: Row(
@@ -45,6 +54,7 @@ class OverviewCard extends StatelessWidget {
           ],
         ),
       ),
+      )
     );
   }
 }
